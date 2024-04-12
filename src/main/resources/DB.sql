@@ -22,7 +22,7 @@ create table Libraryhall(
 
 CREATE TABLE reading (
     createdON DATE,
-    Shift CHAR(1) PRIMARY KEY -- 
+    Shift CHAR(1) PRIMARY KEY
 );
 
 CREATE TABLE ShowSeat (
