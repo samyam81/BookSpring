@@ -19,7 +19,7 @@ public class LibraryRepo {
     }
 
     public void save(Library Libray){
-        String sql="Insert into Libray(id,name,tech)& values(?,?,?)";
+        String sql="Insert into Libray(id,name,location,TotalCapacity)& values(?,?,?,?)";
         int rows=template.update(sql,Libray.getLibraryID(),Libray.getLocation(),Libray.getName(),Libray.getTotalcapacity());
         System.out.println("Rows Affected:::"+rows);    
     }
