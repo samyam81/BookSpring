@@ -51,4 +51,24 @@ public class ReadingRepo {
     return readings;
 }
 
+    public List<Reading> findByShift(char shift){
+
+    String sql = "SELECT * FROM Reading WHERE shift = ?";
+    
+    RowMapper<Reading> mapper = new RowMapper<Reading>() {
+        @Override
+        public Reading mapRow(ResultSet rs, int rowNum) throws SQLException{
+            Reading reading = new Reading();
+            reading.setCdate(rs.getDate("cdate"));
+            reading.setShift(rs.getString("shift").charAt(0));
+
+            return reading; // Returning the Reading object 'reading', not the class name.
+        }
+    };
+
+    List<Reading> readings = template.query(sql, new Object[]{shift}, mapper);
+
+    return readings;
+}
+
 }
