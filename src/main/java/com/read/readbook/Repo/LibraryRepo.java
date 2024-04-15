@@ -18,9 +18,10 @@ public class LibraryRepo {
         this.template = template;
     }
 
-    public void save(Library Libray){
-        String sql="Insert into Libray(id,name,location,TotalCapacity)& values(?,?,?,?)";
-        int rows=template.update(sql,Libray.getLibraryID(),Libray.getLocation(),Libray.getName(),Libray.getTotalcapacity());
-        System.out.println("Rows Affected:::"+rows);    
+    public void save(Library library) {
+     String sql = "INSERT INTO Library(id, name, location, TotalCapacity) VALUES (?, ?, ?, ?)";
+     int rows = template.update(sql, library.getLibraryID(), library.getName(), library.getLocation(), library.getTotalcapacity());
+     System.out.println("Rows Affected: " + rows);
     }
+
 }
