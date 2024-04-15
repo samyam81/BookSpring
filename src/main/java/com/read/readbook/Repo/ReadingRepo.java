@@ -60,7 +60,8 @@ public class ReadingRepo {
     
     RowMapper<Reading> mapper = new RowMapper<Reading>() {
         @Override
-        public Reading mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException{
+        @SuppressWarnings("null")
+        public Reading mapRow( ResultSet rs, int rowNum) throws SQLException{
             Reading reading = new Reading();
             reading.setCdate(rs.getDate("cdate"));
             reading.setShift(rs.getString("shift").charAt(0));
@@ -69,6 +70,7 @@ public class ReadingRepo {
         }
     };
 
+    @SuppressWarnings("deprecation")
     List<Reading> readings = template.query(sql, new Object[]{shift}, mapper);
 
     return readings;
@@ -80,7 +82,8 @@ public List<Reading> findByDate(Date cdate){
     
     RowMapper<Reading> mapper = new RowMapper<Reading>() {
         @Override
-        public Reading mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException{
+        @SuppressWarnings("null")
+        public Reading mapRow( ResultSet rs, int rowNum) throws SQLException{
             Reading reading = new Reading();
             reading.setCdate(rs.getDate("cdate"));
             reading.setShift(rs.getString("shift").charAt(0));
@@ -91,7 +94,8 @@ public List<Reading> findByDate(Date cdate){
 
     List<Reading> readings = template.query(sql, new PreparedStatementSetter() {
         @Override
-        public void setValues(@SuppressWarnings("null") PreparedStatement ps) throws SQLException {
+        @SuppressWarnings("null")
+        public void setValues( PreparedStatement ps) throws SQLException {
             ps.setDate(1, cdate);
         }
     }, mapper);
