@@ -1,5 +1,8 @@
 package com.read.readbook.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ShowSeat {
 
 //     CREATE TABLE ShowSeat (

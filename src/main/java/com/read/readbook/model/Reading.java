@@ -2,6 +2,9 @@ package com.read.readbook.model;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Reading {
     
 // CREATE TABLE reading (
