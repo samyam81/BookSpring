@@ -49,6 +49,10 @@ public class ShowSeat {
         this.shift = shift;
     }
 
+    public void setShift(char shift){
+        this.shift=shift;
+    }
+
     @Override
     public String toString() {
         return "ShowSeat [seatId=" + seatId + ", reserved=" + reserved + ", price=" + price + ", shift=" + shift + "]";
