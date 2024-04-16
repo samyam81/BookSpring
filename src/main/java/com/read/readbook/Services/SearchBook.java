@@ -1,6 +1,13 @@
 package com.read.readbook.Services;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.read.readbook.model.Book;
 import com.read.readbook.model.Library;
@@ -9,34 +16,42 @@ import com.read.readbook.model.ShowSeat;
 
 public class SearchBook {
     
-    public List<ShowSeat> Searchbook(Book book,Library library,Reading reading){
+    private JdbcTemplate template; 
+    
+    @SuppressWarnings("deprecation")
+    public List<ShowSeat> searchBook(Book book, Library library, Reading reading) {
 
-        List<ShowSeat> available =new ArrayList<>();
+        @SuppressWarnings("unused")
+        List<ShowSeat> availableSeats = new ArrayList<>();
 
-        String bname=book.getName();
-        String city=library.getLocation();
-        Date date=reading.getCdate();
+        String bname = book.getName();
+        String city = library.getLocation();
+        Date date = reading.getCdate();
 
-        String sql = "SELECT b.name, l.location, r.cdate FROM Book b, Library l, Reading r";
+        String sql = "SELECT * FROM Showseat WHERE book_name = ? AND library_location = ? AND reading_date = ?";
         
-        RowMapper<Object[]> mapper = new RowMapper<Object[]>() {
+        RowMapper<ShowSeat> mapper = new RowMapper<ShowSeat>() {
+            @SuppressWarnings("null")
             @Override
-            public Object[] mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Object[] result = new Object[3];
-                result[0] = rs.getString("name");
-                result[1] = rs.getString("location");
-                result[2] = rs.getDate("cdate");
+            public ShowSeat mapRow(ResultSet rs, int rowNum) throws SQLException {
+                ShowSeat seat = new ShowSeat();
+                seat.setSeatId(rs.getInt("seat_id"));
+                seat.setReserved(rs.getBoolean("reserved"));
+                seat.setPrice(rs.getInt("price"));
+                seat.setShift(rs.getString("shift").charAt(0));
 
-                return result; 
+             
+                seat.setBook(book);
+                seat.setLibrary(library);
+                seat.setReading(reading);
+
+                return seat; 
             }
         };
 
-        List<Object[]> data = template.query(sql, mapper);
+      
+        List<ShowSeat> seats = template.query(sql, new Object[]{bname, city, date}, mapper);
 
-        return data;
-
-
-        return null;
-        
+        return seats;
     }
 }

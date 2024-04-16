@@ -1,7 +1,6 @@
 package com.read.readbook.model;
 
 import org.springframework.stereotype.Component;
-
 @Component
 public class ShowSeat {
 
@@ -17,6 +16,9 @@ public class ShowSeat {
     private boolean reserved;
     private int price;
     private char shift;
+    private Book book;
+    private Library library;
+    private Reading reading;
 
     public int getSeatId() {
         return seatId;
@@ -57,5 +59,24 @@ public class ShowSeat {
     public String toString() {
         return "ShowSeat [seatId=" + seatId + ", reserved=" + reserved + ", price=" + price + ", shift=" + shift + "]";
     }
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    public void setReading(Reading reading) {
+        this.reading = reading;
+    }
+    public Book getBook() {
+        return book;
+    }
+    public Library getLibrary() {
+        return library;
+    }
+    public Reading getReading() {
+        return reading;
+    }
 }
