@@ -8,12 +8,14 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
 
 import com.read.readbook.model.Book;
 import com.read.readbook.model.Library;
 import com.read.readbook.model.Reading;
 import com.read.readbook.model.ShowSeat;
 
+@Service
 public class SearchBook {
     
     private JdbcTemplate template; 

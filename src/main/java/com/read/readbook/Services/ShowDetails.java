@@ -3,8 +3,10 @@ package com.read.readbook.Services;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.read.readbook.model.ShowSeat;
+import org.springframework.stereotype.Service;
 
+import com.read.readbook.model.ShowSeat;
+@Service
 public class ShowDetails {
     private List<ShowSeat> showSeats;
 

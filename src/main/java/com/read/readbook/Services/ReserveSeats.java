@@ -2,8 +2,11 @@ package com.read.readbook.Services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.read.readbook.model.ShowSeat;
 
+@Service
 public class ReserveSeats {
     
     public void reserveSeat(boolean reserved, List<ShowSeat> seatList) {
