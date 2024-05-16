@@ -15,6 +15,12 @@ public class LibraryHall {
     private int capacity;
     private int hallID;
     
+    public int getHallID() {
+        return hallID;
+    }
+    public void setHallID(int hallID) {
+        this.hallID = hallID;
+    }
     public String getHallname() {
         return hallname;
     }
@@ -27,13 +33,6 @@ public class LibraryHall {
     }
     public void setCapacity(int capacity) {
         this.capacity = capacity;
-    }
-
-    public int getHallID() {
-        return hallID;
-    }
-    public void setHallID(int hallID) {
-        this.hallID = hallID;
     }
 
     @Override
